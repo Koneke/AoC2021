@@ -6,15 +6,20 @@ var depths = File.ReadLines("input.txt")
     .Select(l => Convert.ToInt32(l))
     .ToList();
 
-var elements = 3;
-var windows = 
-    Enumerable.Range(elements - 1, depths.Count() + 1 - elements)
-        .Select(i => Enumerable.Range(i + 1 - elements, elements)
-            .Select(j => depths[j]).Sum());
+int solve(int windowSize)
+{
+    var windows = 
+        Enumerable.Range(windowSize - 1, depths.Count() + 1 - windowSize)
+            .Select(i => Enumerable.Range(i + 1 - windowSize, windowSize)
+                .Select(j => depths[j]).Sum());
 
-Console.WriteLine(
-    windows
+    return windows
         .Skip(1)
         .Zip(windows, (current, last) => (current, last))
         .Where(lc => lc.current > lc.last)
-        .Count());
+        .Count();
+}
+
+Console.WriteLine($"Part 1: {solve(1)}");
+Console.WriteLine($"Part 2: {solve(3)}");
+
