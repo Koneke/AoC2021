@@ -2,7 +2,7 @@
 using System.IO;
 using System.Linq;
 
-var depths = File.ReadLines("part-1.txt")
+var depths = File.ReadLines("input.txt")
     .Select(l => Convert.ToInt32(l))
     .ToList();
 
