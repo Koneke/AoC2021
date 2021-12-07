@@ -21,11 +21,12 @@ Console.WriteLine(
                     .Select(x => Math.Abs(
                         (input.Count() % 2 == 1
                             ? input.ElementAt(input.Count() / 2)
-                            : (input.ElementAt((input.Count() - 1) / 2)
-                                + input.ElementAt(input.Count() / 2))
-                                / 2)
-                        - x
-                        ))
+                            :
+                                (
+                                    input.ElementAt((input.Count() - 1) / 2)
+                                    + input.ElementAt(input.Count() / 2)
+                                ) / 2)
+                        - x))
                     .Sum()
                 : Enumerable
                     .Range(input.Min(), input.Max() - input.Min())
